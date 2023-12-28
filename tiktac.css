@@ -1,0 +1,12 @@
+.table-row {
+    border: 2px solid black;
+}
+.tabledata {
+    border: 2px solid black;
+    padding: 50px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: green;
+    background-color: #fff;
+}
