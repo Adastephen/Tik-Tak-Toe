@@ -7,7 +7,7 @@
 // call functions on pages load to initializae game
 // attach click handler to cell element to play games
 
-const table = document.querySelector(".table-row");
+const tableRow = document.querySelectorAll(".table-row");
 let one = document.querySelector(".one");
 let two = document.querySelector(".two");
 let three = document.querySelector(".three");
@@ -23,8 +23,10 @@ let o = document.createElement('p');
 // assign letters to x and o
 let xLet = 'X';
 let oLet = 'O';
-xLet.style.cssText = 'color: black; font-size: 24px;';
-oLet.style.cssText = 'color: white; font-size: 24px;';
+x.appendChild(xLet);
+o.appendChild(oLet);
+x.style.cssText = 'color: black; font-size: 24px;';
+o.style.cssText = 'color: white; font-size: 24px;';
 
 x.textContent = xLet;
 o.textContent = oLet;
