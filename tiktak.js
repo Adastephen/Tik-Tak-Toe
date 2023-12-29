@@ -40,19 +40,24 @@ let winList = [
     [one, five, nine]
 ];
 
-const cellData = document.querySelectorAll('.tabledata');
-cellData.forEach(box => {
+const cellData = document.querySelectorAll(".tabledata");
+cellData.forEach((box) => {
   box.addEventListener("click", () => {
     if (box.textContent === "") {
-        currentPlayer = xLet;
-        function switchPlayer() {
-        currentPlayer = (currentPlayer === xLet) ? oLet : xLet;
-        }
-        box.textContent = switchPlayer();
+      let currentPlayer = xLet;
+      function switchPlayer() {
+        currentPlayer = currentPlayer === xLet ? oLet : xLet;
+      }
+      box.textContent = currentPlayer;
+      switchPlayer();
     }
   });
 });
 table.appendChild(cellData);
+
+
+// function checkWin() {
+// const board = ['', '', '', '', '', '', '', '', ''];
 
 
 
