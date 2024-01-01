@@ -43,85 +43,84 @@ let winList = [
     [seven, eight, nine]
 ];
 
-// one.textContent = 'X';
-
-// one.addEventListener('mouseover', () => {
-//    one.style.cssText = 'background-color: black;';
-// });
-
 const board = ['', '', '', '', '', '', '', '', ''];
 
-tableData.forEach(cell => {
-    cell.addEventListener('mouseover', () => {
-        cell.style.cssText ='background-color:gray;';
+// mouse hover color change
+function hovercolor() {
+    tableData.forEach(cell => {
+        cell.addEventListener('mouseover', () => {
+            cell.style.cssText ='background-color:gray;';
+        });
+        cell.addEventListener('mouseout', () => {
+            cell.style.cssText = 'background-color:white;';
+        });
     });
-    cell.addEventListener('mouseout', () => {
-        cell.style.cssText = 'background-color:white;';
+};  
+
+
+// check win functions
+function checkWin() {
+    for (let i = 0; i < winList.length; i++) {
+        if (winList[i][0].textContent === winList[i][1].textContent && winList[i][1].textContent === winList[i][2].textContent) {
+            if (winList[i][0].textContent === xLet) {
+            alert('X wins');
+            }
+            else if (winList[i][0].textContent === oLet) {
+                alert('O wins');
+            }
+        }
+    };
+};
+
+function getRandomElement(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+  }
+
+  let myList = [one, two, three, four, five, six, seven, eight, nine];
+  let randomElement = getRandomElement(myList);
+
+let currentPlayer = xLet; // Start with 'X'
+
+function clickHandler() {
+    tableData.forEach(cell => {
+        cell.addEventListener('click', () => {
+            if (cell.textContent === '') {
+                cell.textContent = currentPlayer;
+
+                // Switch to the next player for the next turn
+                currentPlayer = (currentPlayer === xLet) ? oLet : xLet;
+            }
+        });
     });
-    let currentPlayer = xLet;
-    const switchPlayer = () => {
-        currentPlayer = currentPlayer === xLet ? oLet : xLet;
-        
-    }
-    cell.textContent = switchPlayer();
-});
-            // for (let i = 0; i < winList.length; i++) {
-            //     if (winList[i][0] === winList[i][1] && winList[i][1] === winList[i][2] && winList[i][0] === xLet) {
-            //         alert('X wins');
-            //     } else if (winList[i][0] === winList[i][1] && winList[i][1] === winList[i][2] && winList[i][0] === oLet) {
-            //         alert('O wins');
-            //     }
-    //  });
-//     });
-// });
+}
 
+function clickHandlerComputer() {
+    tableData.forEach(cell => {
+        cell.addEventListener('click', () => {
+            if (cell.textContent === '') {
+                cell.textContent = currentPlayer;
 
+                // Switch to the next player for the next turn
+                
+               currentPlayer = (currentPlayer === xLet) ? oLet : xLet;
+               // computer switch
+                // automatic switch
+                if (randomElement.textContent === '') {
+                randomElement.textContent = currentPlayer;
+                currentPlayer = (currentPlayer === xLet) ? randomElement : xLet;
+                }
+            }
+        });
+    });
+}
+function runsAll() {
+    hovercolor();
+    // clickHandler();
+    clickHandlerComputer();
+    checkWin();
+}
 
-    // tableRow[i].appendChild(x);
-    // tableRow[i].appendChild(o);
+runsAll();
 
-// function checkWin() {
-
-// if (board[0] === board[1] && board[1] === board[2] && board[0]!== '') {
-//     return board[0];
-
-// }
-
-
-// const cellData = document.querySelectorAll(".tabledata");
-// cellData.forEach(box => {
-//   box.addEventListener("click", () => {
-//     if (box.textContent === "") {
-//       let currentPlayer = xLet;
-//       function switchPlayer() {
-//         currentPlayer = currentPlayer === xLet ? oLet : xLet;
-//       }
-//       box.textContent = currentPlayer;
-//       switchPlayer();
-//     }
-//   });
-// });\
-// tableRow.appendChild(cellData);
-
-
-
-
-
-
-
-// const div1 = document.createElement('div');
-// div1.addEventListener('click', ()=> {
-//     div1.textContent = xLet;
-// })
-// one.appendChild(div1);
-
-// const div2 = document.createElement('div');
-
-// function player1(PlayerObj){
-//     this.PlayerObj = firstPlayer;
-
-// }
-
-// function lists() {
-    
-// }
+// clickHandlerComputer();
