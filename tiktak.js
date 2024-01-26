@@ -61,15 +61,18 @@ function checkWin() {
     for (let i = 0; i < winList.length; i++) {
         if (winList[i][0].textContent === winList[i][1].textContent && winList[i][1].textContent === winList[i][2].textContent) {
             if (winList[i][0].textContent === 'X') {
-            alert('X wins');
+                alert('X wins');
+                return true;
             }
             else if (winList[i][0].textContent === 'O') {
                 alert('O wins');
+                return true;
             }
         }
     };
+    return false;
 };
-checkWin();
+// checkWin();
 
 // random number functions that work behind the comuter layer
 function getRandomElement(arr) {
@@ -77,29 +80,56 @@ function getRandomElement(arr) {
     return arr[randomIndex];
 }
 
-let myList = [one, two, three, four, five, six, seven, eight, nine];
-let randomElement = getRandomElement(myList);
-function clickHandlerComputer() {
-    tableData.forEach(cell => {
-        cell.addEventListener('click', () => {
-            if (cell.textContent === '') {
-                cell.textContent = 'X';
-                
-                // Switch to the next player for the next turn
-                
-                // currentPlayer = (currentPlayer === xLet) ? oLet : xLet;
-                // computer switch
-                // automatic switch
-            }
-            if (randomElement.textContent === '') {
-                randomElement.textContent = 'O';
-                // currentPlayer = (currentPlayer === xLet) ? randomElement : xLet;
-            }
-        });
-        checkWin();
-    });
+function iterList (list){
+    let theList = [];
+    for (let a = 0; a < list.length; a++) {
+        if (list[a].textContent === '') {
+            theList.push(list[a]);
+        }
+    }
+    return theList;
 }
-clickHandlerComputer();
+
+let myList = [one, two, three, four, five, six, seven, eight, nine];
+let status = false;
+// let randomElement = getRandomElement(myList);
+
+// function clickHandlerComputer() {
+tableData.forEach(cell => {
+    cell.addEventListener('click', () => {
+        if (status === true) {
+            return;
+        }
+        if (cell.textContent === '') {
+            cell.textContent = 'X';
+            status = checkWin();
+            if (status) {
+                return;
+            }
+            let aList = iterList(myList);
+            if (aList.length > 0){
+                let aElement = getRandomElement(aList);
+                aElement.textContent = 'O';
+                status = checkWin();
+            }
+        }
+    });
+    // checkWin();
+});
+// }
+// clickHandlerComputer();
+
+function computerSwitch() {
+    tableData.forEach(cell => {
+        if (cell.textContent === '') {
+            randomElement.textContent = 'O';
+        }
+        else {
+            cell.textContent === 'X';
+        }
+    });
+};
+
 
 
 
