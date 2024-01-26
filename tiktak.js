@@ -60,15 +60,17 @@ hoverColor();
 function checkWin() {
     for (let i = 0; i < winList.length; i++) {
         if (winList[i][0].textContent === winList[i][1].textContent && winList[i][1].textContent === winList[i][2].textContent) {
-            if (winList[i][0].textContent === x) {
+            if (winList[i][0].textContent === 'X') {
             alert('X wins');
             }
-            else if (winList[i][0].textContent === o) {
+            else if (winList[i][0].textContent === 'O') {
                 alert('O wins');
             }
         }
     };
 };
+checkWin();
+
 // random number functions that work behind the comuter layer
 function getRandomElement(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
@@ -83,21 +85,16 @@ function clickHandlerComputer() {
             if (cell.textContent === '') {
                 cell.textContent = 'X';
                 
-
                 // Switch to the next player for the next turn
                 
                 // currentPlayer = (currentPlayer === xLet) ? oLet : xLet;
                 // computer switch
                 // automatic switch
-                
             }
             if (randomElement.textContent === '') {
                 randomElement.textContent = 'O';
                 // currentPlayer = (currentPlayer === xLet) ? randomElement : xLet;
             }
-            else{
-                cell.textContent === 'X';
-            };
         });
         checkWin();
     });
